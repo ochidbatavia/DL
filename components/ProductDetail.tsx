@@ -200,27 +200,29 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
 
             {activeTab === 'doc' && (
               <div className="grid sm:grid-cols-2 gap-4">
-                {product.documents?.map((doc, i) => (
-                  <a 
-                    key={i}
-                    href={doc.url}
-                    className="flex items-center justify-between p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-[#3dcd58] hover:shadow-md transition-all group"
-                  >
-                    <div className="flex items-center">
-                      <div className="p-3 bg-white rounded-xl text-red-500 mr-4 shadow-sm group-hover:bg-red-50 transition-colors">
-                        <FileText size={24} />
+                {product.documents && product.documents.length > 0 ? (
+                  product.documents.map((doc, i) => (
+                    <a 
+                      key={i}
+                      href={doc.url}
+                      className="flex items-center justify-between p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-[#3dcd58] hover:shadow-md transition-all group"
+                    >
+                      <div className="flex items-center">
+                        <div className="p-3 bg-white rounded-xl text-red-500 mr-4 shadow-sm group-hover:bg-red-50 transition-colors">
+                          <FileText size={24} />
+                        </div>
+                        <div>
+                          <p className="font-bold text-gray-900">{doc.title}</p>
+                          <p className="text-xs text-gray-400">PDF • 2.4 MB</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-bold text-gray-900">{doc.title}</p>
-                        <p className="text-xs text-gray-400">PDF • 2.4 MB</p>
-                      </div>
-                    </div>
-                    <Download size={20} className="text-gray-300 group-hover:text-[#3dcd58]" />
-                  </a>
-                )) || (
+                      <Download size={20} className="text-gray-300 group-hover:text-[#3dcd58]" />
+                    </a>
+                  ))
+                ) : (
                   <div className="col-span-2 p-12 text-center bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200">
                     <FileText size={48} className="mx-auto text-gray-300 mb-4" />
-                    <p className="text-gray-500 font-medium">Dokumen teknis tidak tersedia untuk produk ini.</p>
+                    <p className="text-gray-500 font-medium">No documents available for this product.</p>
                   </div>
                 )}
               </div>

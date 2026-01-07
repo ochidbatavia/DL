@@ -1,5 +1,4 @@
 
-// Fix: Added React import to resolve React.ReactNode namespace error
 import React from 'react';
 
 export interface Solution {
@@ -10,12 +9,20 @@ export interface Solution {
   image: string;
 }
 
+export interface ProductSpec {
+  label: string;
+  value: string;
+}
+
 export interface Product {
   sku: string;
   name: string;
   brand: string;
   category: string;
   image: string;
+  description?: string;
+  specs?: ProductSpec[];
+  documents?: { title: string; url: string }[];
 }
 
 export interface ChatMessage {

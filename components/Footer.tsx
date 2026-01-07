@@ -3,13 +3,24 @@ import React from 'react';
 import { Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
 import Logo from './Logo';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onNavigate: (page: 'home' | 'about') => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
+  const handleNavClick = (page: 'home' | 'about', e: React.MouseEvent) => {
+    e.preventDefault();
+    onNavigate(page);
+  };
+
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
           <div className="col-span-2 lg:col-span-1">
-            <Logo light className="mb-6" />
+            <div onClick={(e) => handleNavClick('home', e)} className="cursor-pointer">
+              <Logo light className="mb-6" />
+            </div>
             <p className="mt-4 text-gray-400 text-sm leading-relaxed">
               Stockist terbesar untuk berbagai komponen dan peralatan elektrikal di Indonesia. Mitra terpercaya untuk solusi industri dan otomasi sejak tahun 1995.
             </p>
@@ -17,7 +28,7 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold mb-4">Perusahaan</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Tentang Kami</a></li>
+              <li><a href="#" onClick={(e) => handleNavClick('about', e)} className="hover:text-[#3dcd58] transition-colors">Tentang Kami</a></li>
               <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Karir</a></li>
               <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Produk Utama</a></li>
               <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Lokasi Toko</a></li>

@@ -5,7 +5,12 @@ import { MOCK_PRODUCTS } from '../constants';
 import { Product } from '../types';
 import Logo from './Logo';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onNavigate: (page: 'home' | 'about') => void;
+  activePage: 'home' | 'about';
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onNavigate, activePage }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -35,20 +40,38 @@ const Navbar: React.FC = () => {
     setSearchQuery('');
   };
 
+  const handleNavClick = (page: 'home' | 'about', e: React.MouseEvent) => {
+    e.preventDefault();
+    onNavigate(page);
+    setIsOpen(false);
+  };
+
   return (
     <>
       <nav className="bg-white border-b sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
             <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center">
+              <div className="flex-shrink-0 flex items-center" onClick={(e) => handleNavClick('home', e)}>
                 <Logo />
               </div>
               <div className="hidden md:ml-10 md:flex md:space-x-8">
+                <a 
+                  href="#" 
+                  onClick={(e) => handleNavClick('home', e)}
+                  className={`px-3 py-2 text-sm font-medium border-b-2 transition-all ${activePage === 'home' ? 'text-gray-900 border-[#3dcd58]' : 'text-gray-600 border-transparent hover:border-[#3dcd58] hover:text-gray-900'}`}
+                >
+                  Beranda
+                </a>
                 <a href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-[#3dcd58] transition-all">Produk</a>
                 <a href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-[#3dcd58] transition-all">Solusi</a>
-                <a href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-[#3dcd58] transition-all">Layanan</a>
-                <a href="#" className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium border-b-2 border-transparent hover:border-[#3dcd58] transition-all">Dukungan</a>
+                <a 
+                  href="#" 
+                  onClick={(e) => handleNavClick('about', e)}
+                  className={`px-3 py-2 text-sm font-medium border-b-2 transition-all ${activePage === 'about' ? 'text-gray-900 border-[#3dcd58]' : 'text-gray-600 border-transparent hover:border-[#3dcd58] hover:text-gray-900'}`}
+                >
+                  Tentang Kami
+                </a>
               </div>
             </div>
             <div className="hidden md:flex items-center space-x-6">
@@ -87,11 +110,11 @@ const Navbar: React.FC = () => {
         {isOpen && (
           <div className="md:hidden bg-white border-b animate-in slide-in-from-top-4 duration-200">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <a href="#" onClick={(e) => handleNavClick('home', e)} className="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">Beranda</a>
               <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">Produk</a>
               <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">Solusi</a>
-              <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">Layanan</a>
+              <a href="#" onClick={(e) => handleNavClick('about', e)} className="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">Tentang Kami</a>
               <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">Dukungan</a>
-              <a href="#" className="block px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50">Tentang Kami</a>
             </div>
           </div>
         )}
@@ -102,7 +125,9 @@ const Navbar: React.FC = () => {
         <div className="fixed inset-0 z-[60] bg-white animate-in fade-in duration-200 overflow-y-auto">
           <div className="max-w-4xl mx-auto px-4 py-8">
             <div className="flex justify-between items-center mb-12">
-              <Logo />
+              <div onClick={(e) => { handleNavClick('home', e); toggleSearch(); }}>
+                <Logo />
+              </div>
               <button 
                 onClick={toggleSearch}
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"

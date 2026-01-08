@@ -17,15 +17,15 @@ const Logo: React.FC<LogoProps> = ({
 }) => {
   return (
     <div className={`flex items-center space-x-2 group cursor-pointer ${className}`}>
-      <div className={`flex items-center justify-center p-1.5 rounded-lg transition-transform duration-300 group-hover:scale-110 ${light ? 'bg-white' : 'bg-[#3dcd58]'}`}>
+      <div className={`flex items-center justify-center p-1.5 rounded-lg transition-transform duration-300 group-hover:scale-110 ${light ? 'bg-white' : 'bg-red-600'}`}>
         <Zap 
           size={iconSize} 
-          className={light ? 'text-[#3dcd58]' : 'text-white'} 
+          className={light ? 'text-red-600' : 'text-white'} 
           fill="currentColor" 
         />
       </div>
       <span className={`font-bold tracking-tighter transition-colors ${textSize} ${light ? 'text-white' : 'text-gray-900'}`}>
-        DJAJA <span className={light ? 'text-white/80' : 'text-[#3dcd58]'}>LISTRIK</span>
+        DJAJA <span className={light ? 'text-white/80' : 'text-red-600'}>LISTRIK</span>
       </span>
     </div>
   );

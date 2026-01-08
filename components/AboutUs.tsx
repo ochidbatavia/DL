@@ -3,6 +3,8 @@ import React from 'react';
 import { Target, Award, Users, ShieldCheck, History, TrendingUp } from 'lucide-react';
 
 const AboutUs: React.FC = () => {
+  const whatsappUrl = "https://wa.me/628881351844?text=Halo%20Djaja%20Listrik,%20saya%20ingin%20tahu%20lebih%20lanjut%20mengenai%20perusahaan%20dan%20produk%20Anda.";
+
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -16,7 +18,7 @@ const AboutUs: React.FC = () => {
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">
-            Tentang <span className="text-[#3dcd58]">DJAJA LISTRIK</span>
+            Tentang <span className="text-red-600">DJAJA LISTRIK</span>
           </h1>
           <p className="max-w-2xl mx-auto text-xl text-gray-300">
             Lebih dari 25 tahun menjadi tulang punggung penyediaan komponen elektrikal industri di seluruh penjuru Indonesia.
@@ -29,7 +31,7 @@ const AboutUs: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:flex items-center gap-16">
             <div className="lg:w-1/2 mb-12 lg:mb-0">
-              <div className="inline-flex items-center px-4 py-2 bg-green-50 text-[#3dcd58] rounded-full text-sm font-bold mb-6">
+              <div className="inline-flex items-center px-4 py-2 bg-red-50 text-red-600 rounded-full text-sm font-bold mb-6">
                 <History className="w-4 h-4 mr-2" /> SEJARAH KAMI
               </div>
               <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">
@@ -48,7 +50,7 @@ const AboutUs: React.FC = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
                   <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" alt="History 1" className="rounded-2xl h-64 w-full object-cover shadow-lg" />
-                  <div className="bg-[#3dcd58] p-8 rounded-2xl text-white">
+                  <div className="bg-red-600 p-8 rounded-2xl text-white">
                     <div className="text-4xl font-bold mb-2">25+</div>
                     <div className="text-sm font-medium opacity-90">Tahun Pengalaman</div>
                   </div>
@@ -74,7 +76,7 @@ const AboutUs: React.FC = () => {
               <div className="absolute top-0 right-0 p-8 opacity-5">
                 <Target size={120} />
               </div>
-              <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-8 text-[#3dcd58]">
+              <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-8 text-red-600">
                 <Target size={32} />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Misi Kami</h3>
@@ -86,75 +88,59 @@ const AboutUs: React.FC = () => {
               <div className="absolute top-0 right-0 p-8 opacity-5">
                 <TrendingUp size={120} />
               </div>
-              <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center mb-8 text-[#3dcd58]">
+              <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mb-8 text-red-600">
                 <TrendingUp size={32} />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Visi Kami</h3>
               <p className="text-gray-600 text-lg leading-relaxed">
-                Memimpin transformasi digital dalam distribusi logistik elektrikal di Asia Tenggara, menghadirkan efisiensi rantai pasok melalui integrasi teknologi dan layanan purna jual yang unggul.
+                Memimpin transformasi digital dalam distribusi logistik elektrikal di Asia Tenggara, menghadirkan efisiensi rantai pasok melalui integrasi teknologi dan layanan teknis yang unggul.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
+      {/* Values */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Nilai-Nilai Inti Kami</h2>
-            <p className="text-lg text-gray-500">
-              Prinsip yang membimbing setiap langkah kami dalam melayani pelanggan dan membangun masa depan industri Indonesia.
-            </p>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-extrabold text-gray-900">Nilai-Nilai Inti Kami</h2>
+            <div className="mt-4 w-20 h-1.5 bg-red-600 mx-auto rounded-full"></div>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { 
-                icon: <Award className="w-8 h-8" />, 
-                title: "Kualitas Tanpa Kompromi", 
-                desc: "Hanya menyediakan barang 100% orisinal dari pabrikan global terkemuka." 
-              },
-              { 
-                icon: <Users className="w-8 h-8" />, 
-                title: "Kepuasan Pelanggan", 
-                desc: "Mendengarkan dan memberikan solusi teknis yang tepat sasaran." 
-              },
-              { 
-                icon: <TrendingUp className="w-8 h-8" />, 
-                title: "Kecepatan Respon", 
-                desc: "Proses pesanan dan pengiriman yang cepat karena stok fisik kami miliki sendiri." 
-              },
-              { 
-                icon: <ShieldCheck className="w-8 h-8" />, 
-                title: "Integritas Bisnis", 
-                desc: "Membangun hubungan jangka panjang melalui transparansi dan kejujuran." 
-              }
+              { title: 'Integritas', desc: 'Kejujuran dalam setiap transaksi dan orisinalitas produk.', icon: <ShieldCheck /> },
+              { title: 'Keahlian', desc: 'Tim teknis yang mendalam memahami spesifikasi industrial.', icon: <Award /> },
+              { title: 'Kecepatan', desc: 'Logistik yang tangkas demi efisiensi operasional Anda.', icon: <TrendingUp /> },
+              { title: 'Kemitraan', desc: 'Tumbuh bersama pelanggan sebagai satu kesatuan solusi.', icon: <Users /> }
             ].map((value, i) => (
-              <div key={i} className="text-center p-8 rounded-2xl hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-gray-100 group">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-50 rounded-2xl text-[#3dcd58] mb-6 group-hover:bg-[#3dcd58] group-hover:text-white transition-colors">
-                  {value.icon}
+              <div key={i} className="text-center group">
+                <div className="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mx-auto mb-6 text-gray-400 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                  {React.cloneElement(value.icon as React.ReactElement, { size: 28 })}
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h4>
-                <p className="text-gray-500">{value.desc}</p>
+                <h4 className="text-xl font-bold text-gray-900 mb-2">{value.title}</h4>
+                <p className="text-gray-500 text-sm">{value.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-24 bg-[#3dcd58]">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-8">
-            Siap Bekerja Sama dengan Mitra Elektrikal Terpercaya?
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="px-8 py-4 bg-white text-[#3dcd58] rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors">
-              Hubungi Tim Sales Kami
-            </button>
-            <button className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-colors">
-              Lihat Company Profile
-            </button>
+      {/* Final CTA */}
+      <section className="py-24 bg-red-600">
+        <div className="max-w-4xl mx-auto px-4 text-center text-white">
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-8">Siap Mendukung Transformasi Industri Anda</h2>
+          <p className="text-xl opacity-90 mb-10">Hubungi tim konsultan kami hari ini untuk konsultasi kebutuhan komponen elektrikal proyek Anda.</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a 
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-white text-red-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-gray-100 transition-colors flex items-center justify-center"
+            >
+              Hubungi Tim Sales
+            </a>
+            <button className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-colors">Download Profil Perusahaan</button>
           </div>
         </div>
       </section>

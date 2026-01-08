@@ -4,7 +4,6 @@ import { Product } from '../types';
 import { MOCK_PRODUCTS } from '../constants';
 import { 
   ArrowLeft, 
-  ShoppingCart, 
   FileText, 
   ChevronRight, 
   ShieldCheck, 
@@ -25,7 +24,6 @@ interface ProductDetailProps {
 
 const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProductSelect }) => {
   const [activeTab, setActiveTab] = useState<'desc' | 'spec' | 'doc'>('desc');
-  const [addedToCart, setAddedToCart] = useState(false);
 
   const relatedProducts = useMemo(() => {
     return MOCK_PRODUCTS
@@ -33,9 +31,10 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
       .slice(0, 4);
   }, [product.category, product.sku]);
 
-  const handleAddToCart = () => {
-    setAddedToCart(true);
-    setTimeout(() => setAddedToCart(false), 2000);
+  const handleRequestQuote = () => {
+    const message = `Halo Djaja Listrik, saya tertarik dengan produk:\n\n*${product.name}*\nSKU: ${product.sku}\nBrand: ${product.brand}\n\nMohon informasi penawaran harganya. Terima kasih.`;
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/628881351844?text=${encodedMessage}`, '_blank');
   };
 
   return (
@@ -44,9 +43,9 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
       <nav className="bg-gray-50 border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center space-x-2 text-xs font-medium text-gray-500 uppercase tracking-wider">
-            <button onClick={onBack} className="hover:text-[#3dcd58] transition-colors">Beranda</button>
+            <button onClick={onBack} className="hover:text-red-600 transition-colors">Beranda</button>
             <ChevronRight size={12} />
-            <span className="text-[#3dcd58]">{product.category}</span>
+            <span className="text-red-600">{product.category}</span>
             <ChevronRight size={12} />
             <span className="text-gray-900 truncate">{product.name}</span>
           </div>
@@ -56,7 +55,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <button 
           onClick={onBack}
-          className="flex items-center text-sm font-bold text-gray-500 hover:text-[#3dcd58] mb-8 transition-colors"
+          className="flex items-center text-sm font-bold text-gray-500 hover:text-red-600 mb-8 transition-colors"
         >
           <ArrowLeft size={16} className="mr-2" /> Kembali ke Katalog
         </button>
@@ -73,7 +72,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
             </div>
             <div className="grid grid-cols-4 gap-4">
               {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="aspect-square rounded-xl bg-gray-50 border border-gray-100 cursor-pointer hover:border-[#3dcd58] transition-all"></div>
+                <div key={i} className="aspect-square rounded-xl bg-gray-50 border border-gray-100 cursor-pointer hover:border-red-600 transition-all"></div>
               ))}
             </div>
           </div>
@@ -82,7 +81,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
           <div className="mt-10 lg:mt-0 space-y-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <span className="px-3 py-1 bg-[#3dcd58] text-white text-[10px] font-bold uppercase rounded-full tracking-widest shadow-sm shadow-green-200">
+                <span className="px-3 py-1 bg-red-600 text-white text-[10px] font-bold uppercase rounded-full tracking-widest shadow-sm shadow-red-200">
                   {product.brand}
                 </span>
                 <span className="text-sm font-semibold text-gray-400">SKU: {product.sku}</span>
@@ -91,51 +90,45 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
                 {product.name}
               </h1>
               <div className="mt-4 flex items-center space-x-4">
-                 <div className="flex items-center text-[#3dcd58]">
+                 <div className="flex items-center text-red-600">
                     {[1,2,3,4,5].map(i => (
                       <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/></svg>
                     ))}
                     <span className="ml-2 text-sm text-gray-400 font-medium">(42 Ulasan)</span>
                  </div>
                  <div className="h-4 w-px bg-gray-200"></div>
-                 <span className="text-sm text-[#3dcd58] font-bold flex items-center">
+                 <span className="text-sm text-red-600 font-bold flex items-center">
                     <CheckCircle2 size={14} className="mr-1" /> Tersedia di Stok
                  </span>
               </div>
             </div>
 
             <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100">
-              <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Aksi Cepat</div>
+              <div className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">Hubungi Sales</div>
               <div className="space-y-4">
                 <button 
-                  onClick={handleAddToCart}
-                  className={`w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center transition-all ${
-                    addedToCart ? 'bg-gray-900 text-white' : 'bg-[#3dcd58] text-white hover:bg-[#34b14b] shadow-lg shadow-green-200 active:scale-95'
-                  }`}
+                  onClick={handleRequestQuote}
+                  className="w-full py-5 rounded-xl font-bold text-lg text-white bg-red-600 hover:bg-red-700 shadow-lg shadow-red-200 active:scale-[0.98] transition-all flex items-center justify-center"
                 >
-                  {addedToCart ? (
-                    <>Berhasil Ditambahkan!</>
-                  ) : (
-                    <><ShoppingCart size={20} className="mr-2" /> Tambah ke Keranjang</>
-                  )}
+                  <FileText size={20} className="mr-2" /> Minta Penawaran Harga (WA)
                 </button>
-                <button className="w-full py-4 rounded-xl font-bold text-lg text-gray-700 bg-white border-2 border-gray-200 hover:border-[#3dcd58] hover:text-[#3dcd58] transition-all flex items-center justify-center">
-                  <FileText size={20} className="mr-2" /> Minta Penawaran Harga
-                </button>
+                <p className="text-center text-xs text-gray-400 font-medium">
+                  Klik tombol di atas untuk terhubung langsung dengan tim penjualan kami.
+                </p>
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                <div className="flex items-center space-x-3 text-sm text-gray-600">
-                  <Truck size={18} className="text-[#3dcd58]" />
+                  <Truck size={18} className="text-red-600" />
                   <span>Pengiriman Cepat</span>
                </div>
                <div className="flex items-center space-x-3 text-sm text-gray-600">
-                  <ShieldCheck size={18} className="text-[#3dcd58]" />
+                  <ShieldCheck size={18} className="text-red-600" />
                   <span>Garansi Resmi</span>
                </div>
                <div className="flex items-center space-x-3 text-sm text-gray-600">
-                  <Package size={18} className="text-[#3dcd58]" />
+                  <Package size={18} className="text-red-600" />
                   <span>100% Orisinal</span>
                </div>
             </div>
@@ -144,7 +137,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
 
         {/* Tabs Section */}
         <div className="mt-20 border-t border-gray-100">
-          <div className="flex space-x-8 mb-12">
+          <div className="flex space-x-8 mb-12 overflow-x-auto pb-2 scrollbar-hide">
             {[
               { id: 'desc', label: 'Deskripsi', icon: <Info size={18} /> },
               { id: 'spec', label: 'Spesifikasi Teknik', icon: <List size={18} /> },
@@ -153,9 +146,9 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center space-x-2 py-6 text-sm font-bold uppercase tracking-widest border-t-2 transition-all ${
+                className={`flex items-center space-x-2 py-6 text-sm font-bold uppercase tracking-widest border-t-2 transition-all whitespace-nowrap ${
                   activeTab === tab.id 
-                  ? 'border-[#3dcd58] text-[#3dcd58]' 
+                  ? 'border-red-600 text-red-600' 
                   : 'border-transparent text-gray-400 hover:text-gray-600'
                 }`}
               >
@@ -205,7 +198,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
                     <a 
                       key={i}
                       href={doc.url}
-                      className="flex items-center justify-between p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-[#3dcd58] hover:shadow-md transition-all group"
+                      className="flex items-center justify-between p-6 bg-gray-50 rounded-2xl border border-gray-100 hover:border-red-600 hover:shadow-md transition-all group"
                     >
                       <div className="flex items-center">
                         <div className="p-3 bg-white rounded-xl text-red-500 mr-4 shadow-sm group-hover:bg-red-50 transition-colors">
@@ -216,7 +209,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
                           <p className="text-xs text-gray-400">PDF • 2.4 MB</p>
                         </div>
                       </div>
-                      <Download size={20} className="text-gray-300 group-hover:text-[#3dcd58]" />
+                      <Download size={20} className="text-gray-300 group-hover:text-red-600" />
                     </a>
                   ))
                 ) : (
@@ -235,7 +228,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
           <div className="mt-24 border-t border-gray-100 pt-16">
             <div className="flex items-center justify-between mb-10">
               <h2 className="text-2xl font-extrabold text-gray-900">Produk Terkait</h2>
-              <button className="text-[#3dcd58] font-bold text-sm hover:underline flex items-center">
+              <button className="text-red-600 font-bold text-sm hover:underline flex items-center">
                 Lihat Semua {product.category} <ArrowRight size={16} className="ml-1" />
               </button>
             </div>
@@ -255,19 +248,19 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ product, onBack, onProduc
                   </div>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <span className="text-[10px] font-bold text-[#3dcd58] uppercase tracking-wider bg-green-50 px-2 py-0.5 rounded">
+                      <span className="text-[10px] font-bold text-red-600 uppercase tracking-wider bg-red-50 px-2 py-0.5 rounded">
                         {related.brand}
                       </span>
                       <span className="text-[10px] text-gray-400 font-mono">SKU: {related.sku}</span>
                     </div>
-                    <h3 className="font-bold text-gray-900 line-clamp-2 group-hover:text-[#3dcd58] transition-colors h-12">
+                    <h3 className="font-bold text-gray-900 line-clamp-2 group-hover:text-red-600 transition-colors h-12">
                       {related.name}
                     </h3>
                     <div className="pt-4 flex items-center justify-between border-t border-gray-50">
                       <span className="text-xs text-gray-500 font-medium flex items-center">
-                        <CheckCircle2 className="w-3 h-3 text-[#3dcd58] mr-1" /> Ready Stock
+                        <CheckCircle2 className="w-3 h-3 text-red-600 mr-1" /> Ready Stock
                       </span>
-                      <div className="p-2 bg-gray-50 rounded-lg group-hover:bg-[#3dcd58] group-hover:text-white transition-colors">
+                      <div className="p-2 bg-gray-50 rounded-lg group-hover:bg-red-600 group-hover:text-white transition-colors">
                         <ArrowRight className="w-4 h-4" />
                       </div>
                     </div>

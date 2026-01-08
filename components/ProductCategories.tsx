@@ -37,11 +37,11 @@ const CATEGORIES = [
 
 const ProductCategories: React.FC = () => {
   return (
-    <section className="py-24 bg-white">
+    <section id="categories-section" className="py-24 bg-white scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div className="max-w-2xl">
-            <h2 className="text-base text-[#3dcd58] font-semibold tracking-wide uppercase">Katalog Produk</h2>
+            <h2 className="text-base text-red-600 font-semibold tracking-wide uppercase">Katalog Produk</h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Telusuri Berdasarkan Kategori
             </p>
@@ -67,11 +67,11 @@ const ProductCategories: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
               <div className="absolute bottom-0 left-0 p-6 w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                <span className="inline-block px-2 py-1 bg-[#3dcd58]/20 backdrop-blur-md text-[#3dcd58] text-[10px] font-bold uppercase rounded mb-2 border border-[#3dcd58]/30">
+                <span className="inline-block px-2 py-1 bg-red-600/20 backdrop-blur-md text-red-500 text-[10px] font-bold uppercase rounded mb-2 border border-red-600/30">
                   {category.count}
                 </span>
                 <h3 className="text-xl font-bold text-white mb-2">{category.title}</h3>
-                <div className="flex items-center text-[#3dcd58] text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="flex items-center text-red-500 text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   Lihat Produk <ArrowRight className="ml-1 w-4 h-4" />
                 </div>
               </div>

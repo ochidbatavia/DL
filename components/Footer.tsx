@@ -28,28 +28,28 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div>
             <h4 className="font-bold mb-4">Perusahaan</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" onClick={(e) => handleNavClick('about', e)} className="hover:text-[#3dcd58] transition-colors">Tentang Kami</a></li>
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Karir</a></li>
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Produk Utama</a></li>
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Lokasi Toko</a></li>
+              <li><a href="#" onClick={(e) => handleNavClick('about', e)} className="hover:text-red-600 transition-colors">Tentang Kami</a></li>
+              <li><a href="#" className="hover:text-red-600 transition-colors">Karir</a></li>
+              <li><a href="#" className="hover:text-red-600 transition-colors">Produk Utama</a></li>
+              <li><a href="#" className="hover:text-red-600 transition-colors">Lokasi Toko</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-bold mb-4">Dukungan</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Pusat Bantuan</a></li>
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Layanan Teknis</a></li>
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Katalog Produk</a></li>
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Kontak Sales</a></li>
+              <li><a href="#" className="hover:text-red-600 transition-colors">Pusat Bantuan</a></li>
+              <li><a href="#" className="hover:text-red-600 transition-colors">Layanan Teknis</a></li>
+              <li><a href="#" className="hover:text-red-600 transition-colors">Katalog Produk</a></li>
+              <li><a href="#" className="hover:text-red-600 transition-colors">Kontak Sales</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-bold mb-4">Legal</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Kebijakan Privasi</a></li>
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Syarat & Ketentuan</a></li>
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Sertifikasi</a></li>
-              <li><a href="#" className="hover:text-[#3dcd58] transition-colors">Etika Bisnis</a></li>
+              <li><a href="#" className="hover:text-red-600 transition-colors">Kebijakan Privasi</a></li>
+              <li><a href="#" className="hover:text-red-600 transition-colors">Syarat & Ketentuan</a></li>
+              <li><a href="#" className="hover:text-red-600 transition-colors">Sertifikasi</a></li>
+              <li><a href="#" className="hover:text-red-600 transition-colors">Etika Bisnis</a></li>
             </ul>
           </div>
           <div className="col-span-2 md:col-span-4 lg:col-span-1">

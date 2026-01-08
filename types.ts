@@ -5,6 +5,8 @@ export interface Solution {
   id: string;
   title: string;
   description: string;
+  longDescription?: string;
+  features?: string[];
   icon: React.ReactNode;
   image: string;
 }

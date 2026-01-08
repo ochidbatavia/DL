@@ -14,7 +14,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ onSelectProduct }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
           <div className="max-w-2xl">
-            <h2 className="text-base text-[#3dcd58] font-semibold tracking-wide uppercase">Produk Unggulan</h2>
+            <h2 className="text-base text-red-600 font-semibold tracking-wide uppercase">Produk Unggulan</h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
               Stok Tersedia & Siap Kirim
             </p>
@@ -40,19 +40,19 @@ const ProductGrid: React.FC<ProductGridProps> = ({ onSelectProduct }) => {
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-[10px] font-bold text-[#3dcd58] uppercase tracking-wider bg-green-50 px-2 py-0.5 rounded">
+                  <span className="text-[10px] font-bold text-red-600 uppercase tracking-wider bg-red-50 px-2 py-0.5 rounded">
                     {product.brand}
                   </span>
                   <span className="text-[10px] text-gray-400 font-mono">SKU: {product.sku}</span>
                 </div>
-                <h3 className="font-bold text-gray-900 line-clamp-2 group-hover:text-[#3dcd58] transition-colors h-12">
+                <h3 className="font-bold text-gray-900 line-clamp-2 group-hover:text-red-600 transition-colors h-12">
                   {product.name}
                 </h3>
                 <div className="pt-4 flex items-center justify-between border-t border-gray-50">
                   <span className="text-xs text-gray-500 font-medium flex items-center">
-                    <CheckCircle2 className="w-3 h-3 text-[#3dcd58] mr-1" /> Ready Stock
+                    <CheckCircle2 className="w-3 h-3 text-red-600 mr-1" /> Ready Stock
                   </span>
-                  <div className="p-2 bg-gray-50 rounded-lg group-hover:bg-[#3dcd58] group-hover:text-white transition-colors">
+                  <div className="p-2 bg-gray-50 rounded-lg group-hover:bg-red-600 group-hover:text-white transition-colors">
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
